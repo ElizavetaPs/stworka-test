@@ -1,0 +1,124 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+button {
+	cursor: pointer;
+}
+
+body {
+	background-color: rgb(255, 255, 255);
+	font-family: "Inter", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.progress-bar {
+	--text-color: #ffffff;
+	--background-color: #3579F5;
+}
+
+.wrapper {
+	color: var(--text-color);
+	background-color: var(--background-color);
+	border-radius: 10px;
+	padding: 16px 18px 16px 22px;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-gap: 16px;
+	align-items: center;
+}
+
+.progress {
+	--total-steps: 7;
+	--current-step: 1;
+	--radius: 29;
+
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+}
+
+.progress svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: rotate(-90deg);
+}
+
+.progress__track {
+	stroke: rgba(255, 255, 255, 0.5);
+}
+
+.progress__progress {
+	stroke-dasharray: calc(2 * 3.14 * var(--radius));
+	stroke-dashoffset: calc(2 * 3.14 * var(--radius) * ((var(--total-steps) - var(--current-step)) / var(--total-steps)));
+	stroke: rgb(255, 255, 255);
+}
+
+.progress__value {
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	row-gap: 4px;
+	margin-top: auto;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.label {
+	width: fit-content;
+	background-color: #2364DB;
+	padding: 0 10px;
+	border-radius: 40px;
+}
+
+.title {
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: 600;
+}
+
+.button {
+	display: inline-block;
+	height: 40px;
+	padding: 0 29px;
+	color: #4777ED;
+	font-size: 14px;
+	line-height: 20px;
+	border: 1px solid #F4F8FF;
+	background-color: #F4F8FF;
+	border-radius: 6px;
+	transition: all 0.2s linear;
+}
+
+.button:hover {
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	background-color: var(--background-color);
+}
+
+@media (max-width: 500px) {
+	.container {
+		grid-template-columns: auto 1fr;
+	}
+
+	.button {
+		grid-column: span 2;
+	}
+}
